@@ -1,0 +1,10 @@
+[
+  {
+    "id": "admin-root",
+    "username": "admin",
+    "email": "admin@rntfootwear.com",
+    "passwordHash": "$2b$10$MGinbUsOa5OSrdThlwH6h.ucweqhn9mtAra0R132FboX1z1G44l4O",
+    "role": "admin",
+    "createdAt": "2026-09-24T00:00:00.000Z"
+  }
+]

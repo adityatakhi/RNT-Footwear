@@ -1,0 +1,333 @@
+import type { Product, ProductCategory } from '@/types';
+
+// ── Color options (shared across products) ──────────────────────────────────
+const BLACK_COLOR = { name: 'Obsidian', hex: '#1C1C1C', slug: 'obsidian' };
+const WHITE_COLOR = { name: 'Arctic White', hex: '#F0EFEB', slug: 'arctic-white' };
+const RED_COLOR = { name: 'Crimson', hex: '#C0392B', slug: 'crimson' };
+const BLUE_COLOR = { name: 'Ocean', hex: '#1A4F7A', slug: 'ocean' };
+const OLIVE_COLOR = { name: 'Olive', hex: '#6B6F47', slug: 'olive' };
+const GREY_COLOR = { name: 'Storm Grey', hex: '#4A5568', slug: 'storm-grey' };
+
+// ── Standard sizes ─────────────────────────────────────────────────────────
+const STANDARD_SIZES = [
+  { uk: 6, us: 7, eu: 39, available: true },
+  { uk: 7, us: 8, eu: 40, available: true },
+  { uk: 8, us: 9, eu: 41, available: true },
+  { uk: 9, us: 10, eu: 42, available: true },
+  { uk: 10, us: 11, eu: 43, available: true },
+  { uk: 11, us: 12, eu: 44, available: false },
+  { uk: 12, us: 13, eu: 45, available: true },
+];
+
+// ── Sample reviews ─────────────────────────────────────────────────────────
+const SAMPLE_REVIEWS = [
+  {
+    id: 'r1',
+    author: 'Arjun Mehta',
+    rating: 5,
+    date: '2026-08-10',
+    title: 'Best running shoe I\'ve owned',
+    body: 'Incredible cushioning, super lightweight. Perfect for daily runs and gym sessions. The fit is true to size.',
+    verified: true,
+  },
+  {
+    id: 'r2',
+    author: 'Priya Sharma',
+    rating: 4,
+    date: '2026-07-22',
+    title: 'Premium quality, stylish',
+    body: 'Great build quality and looks stunning. Comfortable for all-day wear. Would definitely buy again.',
+    verified: true,
+  },
+  {
+    id: 'r3',
+    author: 'Rahul Verma',
+    rating: 5,
+    date: '2026-06-15',
+    title: 'Exceeded expectations',
+    body: 'The breathable mesh is a game changer in summer. Fast delivery and great packaging.',
+    verified: false,
+  },
+];
+
+// ── Products ────────────────────────────────────────────────────────────────
+export const PRODUCTS: Product[] = [
+  {
+    id: 'prod-001',
+    slug: 'rnt-runner-01',
+    name: 'RNT Runner 01',
+    category: 'running',
+    price: 6999,
+    comparePrice: 8999,
+    currency: 'INR',
+    shortDescription: 'Performance running shoe engineered for speed and endurance.',
+    description: 'The RNT Runner 01 is built for runners who demand more. A breathable mesh upper keeps your feet cool while advanced cushioning technology absorbs impact on every stride. Whether you\'re hitting the track or the pavement, Runner 01 delivers.',
+    images: [
+      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80',
+      'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=800&q=80',
+      'https://images.unsplash.com/photo-1539185441755-769473a23570?w=800&q=80',
+    ],
+    colors: [BLACK_COLOR, WHITE_COLOR, RED_COLOR, BLUE_COLOR],
+    sizes: STANDARD_SIZES,
+    features: ['Breathable Mesh Upper', 'Lightweight Foam Midsole', 'Cushion Foam Technology', 'Anti-Slip Outsole'],
+    specifications: [
+      { label: 'Upper', value: 'Engineered Knit Mesh' },
+      { label: 'Midsole', value: 'RNT FoamX™' },
+      { label: 'Outsole', value: 'Rubber with Flex Grooves' },
+      { label: 'Weight', value: '245g (UK 9)' },
+      { label: 'Drop', value: '10mm' },
+    ],
+    reviews: SAMPLE_REVIEWS,
+    rating: 4.8,
+    reviewCount: 124,
+    stock: 48,
+    isNew: true,
+    isBestSeller: true,
+    isFeatured: true,
+    tags: ['running', 'performance', 'lightweight'],
+    createdAt: '2026-07-01',
+  },
+  {
+    id: 'prod-002',
+    slug: 'rnt-runner-02',
+    name: 'RNT Runner 02',
+    category: 'running',
+    price: 7499,
+    currency: 'INR',
+    shortDescription: 'Next-level trail running with enhanced grip and durability.',
+    description: 'RNT Runner 02 takes performance further. Reinforced overlays provide stability on technical terrain while the energy-return midsole keeps your legs fresh mile after mile.',
+    images: [
+      'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=800&q=80',
+      'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=800&q=80',
+      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80',
+    ],
+    colors: [BLACK_COLOR, OLIVE_COLOR, GREY_COLOR],
+    sizes: STANDARD_SIZES,
+    features: ['Trail-Ready Outsole', 'Reinforced Overlays', 'Energy Return Midsole', 'Water-Resistant Upper'],
+    specifications: [
+      { label: 'Upper', value: 'Ripstop Mesh with TPU Overlays' },
+      { label: 'Midsole', value: 'RNT EnergyX™' },
+      { label: 'Outsole', value: 'Multi-Directional Lugs' },
+      { label: 'Weight', value: '278g (UK 9)' },
+      { label: 'Drop', value: '8mm' },
+    ],
+    reviews: SAMPLE_REVIEWS,
+    rating: 4.6,
+    reviewCount: 87,
+    stock: 32,
+    isNew: true,
+    tags: ['running', 'trail', 'outdoor'],
+    createdAt: '2026-07-15',
+  },
+  {
+    id: 'prod-003',
+    slug: 'rnt-flux-03',
+    name: 'RNT Flux 03',
+    category: 'lifestyle',
+    price: 5999,
+    currency: 'INR',
+    shortDescription: 'Street-ready lifestyle shoe with a clean minimal silhouette.',
+    description: 'The RNT Flux 03 blurs the line between performance and street style. A low-profile design with premium materials makes it the perfect all-day companion — from morning commute to evening outings.',
+    images: [
+      'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=800&q=80',
+      'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=800&q=80',
+      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80',
+    ],
+    colors: [WHITE_COLOR, BLACK_COLOR, BLUE_COLOR],
+    sizes: STANDARD_SIZES,
+    features: ['Premium Suede Upper', 'Memory Foam Insole', 'Low-Profile Design', 'Vulcanized Outsole'],
+    specifications: [
+      { label: 'Upper', value: 'Premium Suede / Canvas' },
+      { label: 'Midsole', value: 'EVA Foam' },
+      { label: 'Outsole', value: 'Vulcanized Rubber' },
+      { label: 'Weight', value: '210g (UK 9)' },
+    ],
+    reviews: SAMPLE_REVIEWS,
+    rating: 4.7,
+    reviewCount: 203,
+    stock: 61,
+    isNew: true,
+    isBestSeller: true,
+    tags: ['lifestyle', 'casual', 'minimalist'],
+    createdAt: '2026-08-01',
+  },
+  {
+    id: 'prod-004',
+    slug: 'rnt-loop-04',
+    name: 'RNT Loop 04',
+    category: 'training',
+    price: 6499,
+    currency: 'INR',
+    shortDescription: 'Versatile cross-training shoe built for gym and studio.',
+    description: 'Built for multi-directional movement, the RNT Loop 04 handles everything from HIIT to weightlifting. A stable heel platform and flexible forefoot give you the perfect balance of support and mobility.',
+    images: [
+      'https://images.unsplash.com/photo-1539185441755-769473a23570?w=800&q=80',
+      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80',
+      'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=800&q=80',
+    ],
+    colors: [BLACK_COLOR, RED_COLOR, GREY_COLOR],
+    sizes: STANDARD_SIZES,
+    features: ['Stable Heel Platform', 'Multi-Directional Flex', 'Moisture-Wicking Lining', 'Durable Outsole'],
+    specifications: [
+      { label: 'Upper', value: 'Synthetic Mesh' },
+      { label: 'Midsole', value: 'Dual-Density Foam' },
+      { label: 'Outsole', value: 'Pivot Points + Flex Grooves' },
+      { label: 'Weight', value: '262g (UK 9)' },
+    ],
+    reviews: SAMPLE_REVIEWS,
+    rating: 4.5,
+    reviewCount: 156,
+    stock: 29,
+    isNew: true,
+    tags: ['training', 'gym', 'crossfit'],
+    createdAt: '2026-08-10',
+  },
+  {
+    id: 'prod-005',
+    slug: 'rnt-edge-05',
+    name: 'RNT Edge 05',
+    category: 'basketball',
+    price: 8999,
+    comparePrice: 10999,
+    currency: 'INR',
+    shortDescription: 'High-top court shoe with explosive ankle support.',
+    description: 'Dominate the court with RNT Edge 05. High-top construction offers ankle protection during explosive cuts, while a responsive cushioning system keeps you bouncy play after play.',
+    images: [
+      'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=800&q=80',
+      'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=800&q=80',
+      'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=800&q=80',
+    ],
+    colors: [BLACK_COLOR, WHITE_COLOR, RED_COLOR],
+    sizes: STANDARD_SIZES,
+    features: ['High-Top Ankle Support', 'Herringbone Outsole', 'Responsive Cushioning', 'Lockdown Lacing'],
+    specifications: [
+      { label: 'Upper', value: 'Leather + Textile' },
+      { label: 'Midsole', value: 'Phylon Foam' },
+      { label: 'Outsole', value: 'Herringbone Rubber' },
+      { label: 'Weight', value: '390g (UK 9)' },
+    ],
+    reviews: SAMPLE_REVIEWS,
+    rating: 4.9,
+    reviewCount: 78,
+    stock: 15,
+    isNew: true,
+    isBestSeller: true,
+    tags: ['basketball', 'court', 'high-top'],
+    createdAt: '2026-08-20',
+  },
+  {
+    id: 'prod-006',
+    slug: 'rnt-comfort-06',
+    name: 'RNT Comfort 06',
+    category: 'casual',
+    price: 4999,
+    currency: 'INR',
+    shortDescription: 'Cloud-like casual shoe for everyday effortless comfort.',
+    description: 'The RNT Comfort 06 is exactly what its name promises — pure comfort, all day long. A plush foam midsole, wide toe box, and soft upper create a shoe that feels like walking on a cloud.',
+    images: [
+      'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=800&q=80',
+      'https://images.unsplash.com/photo-1539185441755-769473a23570?w=800&q=80',
+      'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=800&q=80',
+    ],
+    colors: [WHITE_COLOR, BLACK_COLOR, OLIVE_COLOR, BLUE_COLOR],
+    sizes: STANDARD_SIZES,
+    features: ['Plush Memory Foam', 'Wide Toe Box', 'Soft Knit Upper', 'Easy Slip-On Design'],
+    specifications: [
+      { label: 'Upper', value: 'Soft Knit' },
+      { label: 'Insole', value: 'Memory Foam' },
+      { label: 'Outsole', value: 'Lightweight EVA' },
+      { label: 'Weight', value: '195g (UK 9)' },
+    ],
+    reviews: SAMPLE_REVIEWS,
+    rating: 4.6,
+    reviewCount: 311,
+    stock: 94,
+    isBestSeller: true,
+    tags: ['casual', 'comfort', 'everyday'],
+    createdAt: '2026-05-01',
+  },
+];
+
+// ── Category data ──────────────────────────────────────────────────────────
+export const CATEGORIES = [
+  {
+    id: 'cat-running',
+    name: 'Running',
+    slug: 'running' as ProductCategory,
+    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80',
+    count: PRODUCTS.filter(p => p.category === 'running').length,
+  },
+  {
+    id: 'cat-lifestyle',
+    name: 'Lifestyle',
+    slug: 'lifestyle' as ProductCategory,
+    image: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=800&q=80',
+    count: PRODUCTS.filter(p => p.category === 'lifestyle').length,
+  },
+  {
+    id: 'cat-training',
+    name: 'Training',
+    slug: 'training' as ProductCategory,
+    image: 'https://images.unsplash.com/photo-1539185441755-769473a23570?w=800&q=80',
+    count: PRODUCTS.filter(p => p.category === 'training').length,
+  },
+  {
+    id: 'cat-casual',
+    name: 'Casual',
+    slug: 'casual' as ProductCategory,
+    image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=800&q=80',
+    count: PRODUCTS.filter(p => p.category === 'casual').length,
+  },
+  {
+    id: 'cat-basketball',
+    name: 'Basketball',
+    slug: 'basketball' as ProductCategory,
+    image: 'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=800&q=80',
+    count: PRODUCTS.filter(p => p.category === 'basketball').length,
+  },
+  {
+    id: 'cat-outdoor',
+    name: 'Outdoor',
+    slug: 'outdoor' as ProductCategory,
+    image: 'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=800&q=80',
+    count: PRODUCTS.filter(p => p.category === 'outdoor').length,
+  },
+];
+
+// ── Helpers ────────────────────────────────────────────────────────────────
+export function getProductBySlug(slug: string): Product | undefined {
+  return PRODUCTS.find(p => p.slug === slug);
+}
+
+export function getNewArrivals(limit = 6): Product[] {
+  return PRODUCTS.filter(p => p.isNew).slice(0, limit);
+}
+
+export function getBestSellers(limit = 4): Product[] {
+  return PRODUCTS.filter(p => p.isBestSeller).slice(0, limit);
+}
+
+export function getRelatedProducts(product: Product, limit = 4): Product[] {
+  return PRODUCTS
+    .filter(p => p.id !== product.id && p.category === product.category)
+    .slice(0, limit);
+}
+
+export function filterProducts(products: Product[], filters: Partial<{ category: string; priceMax: number; search: string }>): Product[] {
+  return products.filter(p => {
+    if (filters.category && p.category !== filters.category) return false;
+    if (filters.priceMax && p.price > filters.priceMax) return false;
+    if (filters.search) {
+      const q = filters.search.toLowerCase();
+      return p.name.toLowerCase().includes(q) || p.tags.some(t => t.includes(q));
+    }
+    return true;
+  });
+}
+
+export function formatPrice(amount: number, currency = 'INR'): string {
+  if (currency === 'INR') {
+    return `₹${amount.toLocaleString('en-IN')}`;
+  }
+  return new Intl.NumberFormat('en-US', { style: 'currency', currency }).format(amount);
+}
