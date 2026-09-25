@@ -9,8 +9,6 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@react-three/drei": "^9.99.0",
-    "@react-three/fiber": "^8.15.0",
     "@studio-freight/lenis": "^1.0.42",
     "bcryptjs": "^3.0.3",
     "framer-motion": "^11.18.0",
@@ -20,7 +18,6 @@
     "pg": "^8.23.0",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "three": "^0.169.0",
     "zustand": "^5.0.2"
   },
   "devDependencies": {
@@ -40,9 +37,6 @@
       "next": true,
       "react": true,
       "react-dom": true,
-      "three": true,
-      "@react-three/fiber": true,
-      "@react-three/drei": true,
       "gsap": true,
       "@studio-freight/lenis": true,
       "framer-motion": true,
